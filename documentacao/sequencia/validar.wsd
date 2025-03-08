@@ -1,0 +1,31 @@
+@startuml "Caso de validação"
+
+actor Requisitor
+
+participant Documentos
+participant DocumentosServiceFactory
+participant CpfService
+
+
+'Actions
+
+activate Requisitor
+Requisitor -> Documentos: validar(documento, TipoDocumento)
+activate Documentos
+Documentos -> DocumentosServiceFactory: createService(TipoDocumento)
+activate DocumentosServiceFactory
+DocumentosServiceFactory --> Documentos: CpfService
+deactivate DocumentosServiceFactory
+Documentos -> CpfService: validar(documento)
+activate CpfService
+alt Documento valido
+    CpfService --> Documentos: verdadeiro
+else
+    CpfService --> Documentos: verdadeiro
+end
+deactivate CpfService
+
+Documentos --> Requisitor: validação
+deactivate Documentos
+deactivate Requisitor
+@enduml

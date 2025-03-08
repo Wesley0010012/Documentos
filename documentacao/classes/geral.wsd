@@ -1,0 +1,50 @@
+@startuml "Diagrama de Classes Geral"
+
+interface MetadadosDocumento
+
+interface ValidadorDocumento
+interface GeradorDocumento<MetadadosDocumento>
+
+interface DocumentoBase<MetadadosDocumentoGenerico>
+
+interface MetadadosDocumentoCPF
+interface MetadadosDocumentoCNPJ
+
+interface CPF<MetadadosDocumentoCPF>
+interface CNPJ<MetadadosDocumentoCNPJ>
+
+class CPFService
+abstract CPFCNPJService
+class CNPJService
+
+interface GeradorNumerosAleatorios
+
+'Actions
+
+GeradorDocumento  ..>MetadadosDocumento
+
+DocumentoBase --|> ValidadorDocumento
+DocumentoBase --|> GeradorDocumento
+
+DocumentoBase ..> MetadadosDocumentoGenerico
+
+CPF --|> DocumentoBase
+CPF ..> MetadadosDocumentoCPF
+CNPJ --|> DocumentoBase
+CNPJ ..> MetadadosDocumentoCNPJ
+
+MetadadosDocumentoGenerico --|> MetadadosDocumento
+
+MetadadosDocumentoCNPJ --|> MetadadosDocumentoGenerico
+MetadadosDocumentoCPF --|> MetadadosDocumentoGenerico
+
+CPFCNPJService ..|> ValidadorDocumento
+CPFCNPJService ..> GeradorNumerosAleatorios
+
+CPFService --|> CPFCNPJService
+CPFService ..|> CPF
+
+CNPJService --|> CPFCNPJService
+CNPJService ..|> CNPJ
+
+@enduml
