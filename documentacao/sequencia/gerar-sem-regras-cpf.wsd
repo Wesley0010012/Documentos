@@ -1,0 +1,44 @@
+@startuml "Caso de geração de CPF sem regras aplicadas"
+
+actor Requisitor
+
+participant Documentos
+participant DocumentosServiceFactory
+participant CpfService
+participant MathGeradorNumerosAleatorios
+
+'actions
+
+activate Requisitor
+Requisitor -> Documentos: gerar(TipoDocumento)
+activate Documentos
+Documentos -> DocumentosServiceFactory: createService(TipoDocumento)
+activate DocumentosServiceFactory
+DocumentosServiceFactory --> Documentos: CpfService
+deactivate DocumentosServiceFactory
+Documentos -> CpfService: gerar(null)
+activate CpfService
+CpfService -> CpfService: gerarBaseInscricao()
+CpfService -> MathGeradorNumerosAleatorios: gerar(1, 9)
+activate MathGeradorNumerosAleatorios
+alt Efetivado 9 vezes
+MathGeradorNumerosAleatorios --> CpfService: Numero
+deactivate MathGeradorNumerosAleatorios
+end
+CpfService --> CpfService: baseDocumento
+
+alt Efetivador 2 vezes
+CpfService -> CpfService: calcularDigitoVerificador(baseDocumento)
+CpfService -> CpfService: somarDigitos(baseDocumento)
+CpfService --> CpfService: soma dos digitos
+CpfService --> CpfService: digito verificador
+end
+
+CpfService --> Documentos: CPF
+deactivate CpfService
+
+Documentos --> Requisitor: CPF
+deactivate Documentos
+deactivate Requisitor
+
+@enduml
