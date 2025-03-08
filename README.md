@@ -73,7 +73,7 @@ console.log(cnpjGerado); // Retorna o CNPJ gerado
 
 ## Notas Importantes
 
-- **Metadados Opcionais**: A utilização dos metadados é opcional. Dependendo do tipo de documento e da implementação, pode não ser necessário fornecer todos os dados para gerar ou validar o documento.
+- **Metadados Opcionais**: A utilização dos metadados é opcional. Dependendo do tipo de documento e da implementação, pode não ser necessário fornecer todos os dados para gerar o documento.
 
 ## Tipos de Documentos Suportados
 
@@ -81,5 +81,3 @@ Atualmente, o pacote oferece suporte para os seguintes tipos de documentos:
 
 - **CPF**
 - **CNPJ**
-
-Você pode adicionar novos tipos de documentos facilmente, conforme necessário, seguindo o padrão estabelecido.
