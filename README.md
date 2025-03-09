@@ -32,15 +32,15 @@ Você pode validar diferentes tipos de documentos com o método `validar`. A seg
 #### Validar CPF
 
 ```js
-const cpfValido = Documentos.validar(DocumentosEnum.CPF, '123.456.789-09');
-console.log(cpfValido); // Retorna true ou false dependendo da validade
+const cpfValido = Documentos.validar(DocumentosEnum.CPF, '12345678909');
+console.log(cpfValido); // Retorna true ou false dependendo do documento
 ```
 
 #### Validar CNPJ
 
 ```js
-const cnpjValido = Documentos.validar(DocumentosEnum.CNPJ, '12.345.678/0001-99');
-console.log(cnpjValido); // Retorna true ou false dependendo da validade
+const cnpjValido = Documentos.validar(DocumentosEnum.CNPJ, '12345678000199');
+console.log(cnpjValido); // Retorna true ou false dependendo do documento
 ```
 
 ### Geração de Documentos
@@ -73,7 +73,7 @@ console.log(cnpjGerado); // Retorna o CNPJ gerado
 
 ## Notas Importantes
 
-- **Metadados Opcionais**: A utilização dos metadados é opcional. Dependendo do tipo de documento e da implementação, pode não ser necessário fornecer todos os dados para gerar o documento.
+- **Metadados Opcionais**: A utilização dos metadados é opcional. Dependendo do tipo de documento e da implementação, pode não ser necessário fornecer todos os dados para gerar o documento. Vale-se ressaltar que a baseInscricao uma vez informado, deve obrigatóriamente ser de 8 caractéres, sendo estes apenas números.
 
 ## Tipos de Documentos Suportados
 
